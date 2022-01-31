@@ -1,0 +1,23 @@
+{
+  "endpointName": "NONE",
+  "type": "segmentation",
+  "minConfidentLevel": 0,
+  "tiling": {
+    "width": 512,
+    "height": 512,
+    "overlapX": 256,
+    "overlapY": 256
+  },
+  "classes": [
+    {
+      "id": 0,
+      "name": "1.Blocking-wood",
+      "alias": "1.Blocking-wood"
+    },
+    {
+      "id": 1,
+      "name": "2.Blocking-metal",
+      "alias": "2.Blocking-metal"
+    }
+  ]
+}

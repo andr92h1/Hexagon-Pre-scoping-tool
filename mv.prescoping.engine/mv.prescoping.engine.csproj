@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\mv.prescoping.db\mv.prescoping.db.csproj" />
+    <ProjectReference Include="..\mv.prescoping.multivista-api\mv.prescoping.multivista-api.csproj" />
+    <ProjectReference Include="..\mv.prescoping.queue\mv.prescoping.queue.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "knex": "^0.95.11",
+    "knex-postgis": "^0.14.1",
+    "pg": "^8.7.1"
+  }
+}

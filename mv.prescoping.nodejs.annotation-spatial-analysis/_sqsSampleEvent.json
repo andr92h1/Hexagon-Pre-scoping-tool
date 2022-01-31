@@ -1,0 +1,23 @@
+﻿{
+  "Records": [
+    {
+      "messageId": "30586638-2b63-4980-9085-f714f9b24df3",
+      "receiptHandle": "AQEBjFuTQtumYcxxsbnDhjSCHgZoIWR1WIvVcMXWNV1yzMGsWN2kPZclyC0L8p2H1pKzzbhpaypE6k7gxtNo1vkrPqqw9/gwvuU+SMN1ujA2vDHK7ArZ/LKrkim+jpC7BMeCwNbAvhe3zqVrjx8qgdvmZH9E4FA8HhBgBgaXHX0hNpatKZowfaVf0ox7QfEMvzN20cccN9X6LCkUgBL8NwiwMotBU4r5UTTmtiLebLoQMSkrWKJn/8htTMayoJ5n3yscwsjdi0wYnZF4mcXI503UBEM7qlbSEiir2vG6pCiTQNK0C++1zDlAb0USNhZKkQYk",
+      "body": "{\"FloorplanId\":\"D434CED9-DF68-4C32-8845-DCB52A4A2D73\",\"DateTaken\":\"2020-03-06\",\"Id\": 158698128 }",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1633009922689",
+        "SequenceNumber": "18864794613917935616",
+        "MessageGroupId": "0",
+        "SenderId": "AIDAZL5VBZRJFIKB4JAAB",
+        "MessageDeduplicationId": "1",
+        "ApproximateFirstReceiveTimestamp": "1633009922689"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "871cf594e2608881e011f6cec51b52e8",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-east-2:644087925842:prescoping-annotation-spatial-analysis-queue.fifo",
+      "awsRegion": "us-east-2"
+    }
+  ]
+}

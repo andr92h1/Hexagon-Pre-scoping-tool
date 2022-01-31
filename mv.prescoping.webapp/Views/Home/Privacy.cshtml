@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<button id="get-entity-type">get entity type</button>
+
+<button id="post-entity-type">post entity type</button>
+
+<button id="post-entity">post entity</button>
+
+<button id="start-adjustment">Start sdjustment</button>
+
+<button id="start-scale">Start scale</button>
+
+<button id="start-linestring-capturing">Start LineString</button>
+<button id="start-polygon-capturing">Start Polygon</button>
+<button id="delete-entity">Delete entity</button>
+<button id="delete-all-photos">Delete all photos</button>
+<button id="switch-photos">Switch photos</button>
+<button id="dispose-viewer">Dispose viewer</button>
+
+<button id="modify-add">Add to modif</button>
+<button id="modify-remove">Remove from modif</button>
+
+<button id="show-layout3d"> Show layout3d</button>
+<button id="hide-layout3d"> Hide layout3d</button>
+
+<button id="show-filling"> Show filling</button>
+<button id="hide-filling"> Hide filling</button>
+
+<button id="start-measurment"> Start measurment</button>
+<button id="cleanup-measurment"> CleanUP measurment</button>
+
+<button id="add-annotation"> Add annotation</button>
+<button id="get-annotations"> Show annotations</button>
+<button id="remove-annotations"> Remove annotations</button>
+
+<button id="multi-class-start">Multi-class</button>
+
+<div id="tools-container" style="height: 750px; width: 400px; float: right; padding:10px; border: solid red";>
+
+</div>
+<div id="viewer-container-1" class="floorplan-viewer-container" tabindex='1'></div>
+<div id="viewer-container-2" class="floorplan-viewer-container" tabindex='1'></div>
+
+<script src="~/lib/Turf.js/turf.min.js"></script>
+<script src="~/lib/three.js/three.min.js"></script>
+<script src="~/lib/three.meshline/THREE.MeshLine.min.js"></script>
+<script src="~/js/mv.prescoping.utilitis.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.floor-plan-matcher.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.floor-plan-scaler.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.floor-plan-sync.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.vector-capturer.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.vector-snapper.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.vector-modifier.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.layout3d-processor.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.annotation-classification-processor.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.floor-plan-room-filler.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.length-measurer.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.photo-viewer.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.floor-plan-viewer.js" asp-append-version="false"></script>
+<script src="~/js/mv.prescoping.main.js" asp-append-version="false"></script>

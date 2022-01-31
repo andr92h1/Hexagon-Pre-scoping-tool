@@ -1,0 +1,23 @@
+{
+  "endpointName": "endpoint-mv-fireproofing-all-f32-20210712-exp-1-gpu",
+  "type": "bbox",
+  "minConfidentLevel": 0,
+  "tiling": {
+    "width": 512,
+    "height": 512,
+    "overlapX": 256,
+    "overlapY": 256
+  },
+  "classes": [
+    {
+      "id": 0,
+      "name": "Negative",
+      "alias": "Negative"
+    },
+    {
+      "id": 1,
+      "name": "Above Fireproofing",
+      "alias": "Above Fireproofing"
+    }
+  ]
+}

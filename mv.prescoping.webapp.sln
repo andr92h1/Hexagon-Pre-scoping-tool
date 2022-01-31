@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.webapp", "mv.prescoping.webapp\mv.prescoping.webapp.csproj", "{79E50AC3-2559-4521-8DDF-EBA2DAE753B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.queue", "mv.prescoping.queue\mv.prescoping.queue.csproj", "{2FBAD06F-12C4-4125-A787-1E96A513E59E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.core", "mv.prescoping.core\mv.prescoping.core.csproj", "{553A3C4C-3404-4E8A-B914-B99CFF1AFCBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.stage-analysis", "mv.prescoping.stage-analysis\mv.prescoping.stage-analysis.csproj", "{B3712B82-4A28-4049-8ED2-71707D07E546}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.db", "mv.prescoping.db\mv.prescoping.db.csproj", "{388A4BA8-9A04-449E-A98E-3C10F9A5E14F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.multivista-api", "mv.prescoping.multivista-api\mv.prescoping.multivista-api.csproj", "{2A110E4E-8B60-4668-A4D4-73C0FB465400}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.engine", "mv.prescoping.engine\mv.prescoping.engine.csproj", "{040ABFF6-2EF7-4250-B95E-1F19DFB691A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mv.prescoping.annotation-spatial-analysis", "mv.prescoping.annotation-spatial-analysis\mv.prescoping.annotation-spatial-analysis.csproj", "{9824D520-1E6B-45D7-876B-1A92B1B9D124}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AWS Lambda", "AWS Lambda", "{EA2C315D-2754-4446-B74E-33F2AA020446}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "mv.prescoping.nodejs.core", "mv.prescoping.nodejs.core\mv.prescoping.nodejs.core.njsproj", "{35513B82-5181-4AB4-96D7-C01CF479B8EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NodeJS Components", "NodeJS Components", "{A921FAAF-78B4-4EF2-8EF1-FE700162F9B9}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "mv.prescoping.nodejs.annotation-spatial-analysis", "mv.prescoping.nodejs.annotation-spatial-analysis\mv.prescoping.nodejs.annotation-spatial-analysis.njsproj", "{93A99353-34B5-47FA-87C9-63D274E18909}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79E50AC3-2559-4521-8DDF-EBA2DAE753B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E50AC3-2559-4521-8DDF-EBA2DAE753B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E50AC3-2559-4521-8DDF-EBA2DAE753B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E50AC3-2559-4521-8DDF-EBA2DAE753B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBAD06F-12C4-4125-A787-1E96A513E59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBAD06F-12C4-4125-A787-1E96A513E59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBAD06F-12C4-4125-A787-1E96A513E59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBAD06F-12C4-4125-A787-1E96A513E59E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{553A3C4C-3404-4E8A-B914-B99CFF1AFCBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553A3C4C-3404-4E8A-B914-B99CFF1AFCBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553A3C4C-3404-4E8A-B914-B99CFF1AFCBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553A3C4C-3404-4E8A-B914-B99CFF1AFCBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3712B82-4A28-4049-8ED2-71707D07E546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3712B82-4A28-4049-8ED2-71707D07E546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3712B82-4A28-4049-8ED2-71707D07E546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3712B82-4A28-4049-8ED2-71707D07E546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{388A4BA8-9A04-449E-A98E-3C10F9A5E14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{388A4BA8-9A04-449E-A98E-3C10F9A5E14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{388A4BA8-9A04-449E-A98E-3C10F9A5E14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{388A4BA8-9A04-449E-A98E-3C10F9A5E14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A110E4E-8B60-4668-A4D4-73C0FB465400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A110E4E-8B60-4668-A4D4-73C0FB465400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A110E4E-8B60-4668-A4D4-73C0FB465400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A110E4E-8B60-4668-A4D4-73C0FB465400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040ABFF6-2EF7-4250-B95E-1F19DFB691A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040ABFF6-2EF7-4250-B95E-1F19DFB691A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040ABFF6-2EF7-4250-B95E-1F19DFB691A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040ABFF6-2EF7-4250-B95E-1F19DFB691A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9824D520-1E6B-45D7-876B-1A92B1B9D124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9824D520-1E6B-45D7-876B-1A92B1B9D124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9824D520-1E6B-45D7-876B-1A92B1B9D124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9824D520-1E6B-45D7-876B-1A92B1B9D124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35513B82-5181-4AB4-96D7-C01CF479B8EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35513B82-5181-4AB4-96D7-C01CF479B8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35513B82-5181-4AB4-96D7-C01CF479B8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35513B82-5181-4AB4-96D7-C01CF479B8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A99353-34B5-47FA-87C9-63D274E18909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A99353-34B5-47FA-87C9-63D274E18909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A99353-34B5-47FA-87C9-63D274E18909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A99353-34B5-47FA-87C9-63D274E18909}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3712B82-4A28-4049-8ED2-71707D07E546} = {EA2C315D-2754-4446-B74E-33F2AA020446}
+		{9824D520-1E6B-45D7-876B-1A92B1B9D124} = {EA2C315D-2754-4446-B74E-33F2AA020446}
+		{35513B82-5181-4AB4-96D7-C01CF479B8EB} = {A921FAAF-78B4-4EF2-8EF1-FE700162F9B9}
+		{93A99353-34B5-47FA-87C9-63D274E18909} = {EA2C315D-2754-4446-B74E-33F2AA020446}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {274FFBB1-BD9B-4B5A-9149-BCAA6596AFC1}
+	EndGlobalSection
+EndGlobal

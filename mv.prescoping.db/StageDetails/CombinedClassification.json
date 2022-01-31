@@ -1,0 +1,278 @@
+{
+  "endpointName": "image-classification-2021-08-13-08-36-15-360",
+  "type": "classification",
+  "minConfidentLevel": 0,
+  "tiling": {
+    "width": 256,
+    "height": 256,
+    "overlapX": 0,
+    "overlapY": 0
+  },
+  "classes": [
+    {
+      "id": 0,
+      "alias": "0.0.",
+      "name": "No_class"
+    },
+    {
+      "id": 1,
+      "alias": "1.1.",
+      "name": "Framing - steel studs"
+    },
+    {
+      "id": 2,
+      "alias": "1.2.",
+      "name": "Framing - wood studs"
+    },
+    {
+      "id": 3,
+      "alias": "1.3.",
+      "name": "Framing - CMU wall"
+    },
+    {
+      "id": 4,
+      "alias": "1.4.",
+      "name": "Framing - Steel Blocking"
+    },
+    {
+      "id": 5,
+      "alias": "1.5.",
+      "name": "Framing - Wood Blocking"
+    },
+    {
+      "id": 6,
+      "alias": "1.6.",
+      "name": "Framing: Metal Ceiling framing"
+    },
+    {
+      "id": 7,
+      "alias": "2.1.",
+      "name": "Drywall - green"
+    },
+    {
+      "id": 8,
+      "alias": "2.2.",
+      "name": "Drywall - Purple"
+    },
+    {
+      "id": 9,
+      "alias": "2.3.",
+      "name": "Drywall - Gray.White"
+    },
+    {
+      "id": 10,
+      "alias": "2.4.",
+      "name": "Drywall - Yellow"
+    },
+    {
+      "id": 11,
+      "alias": "3.1.",
+      "name": "Conduits black"
+    },
+    {
+      "id": 12,
+      "alias": "3.2.",
+      "name": "Conduits - Yellow"
+    },
+    {
+      "id": 13,
+      "alias": "3.3.",
+      "name": "Conduits - Blue"
+    },
+    {
+      "id": 14,
+      "alias": "3.4.",
+      "name": "Conduits - Red"
+    },
+    {
+      "id": 15,
+      "alias": "3.5.",
+      "name": "Conduits - Metal"
+    },
+    {
+      "id": 16,
+      "alias": "3.6.",
+      "name": "Conduits - Metal Encased - Green"
+    },
+    {
+      "id": 17,
+      "alias": "3.7.",
+      "name": "Conduits - Metal Encased - Metal"
+    },
+    {
+      "id": 18,
+      "alias": "3.8.",
+      "name": "Wiring - White"
+    },
+    {
+      "id": 19,
+      "alias": "3.9.",
+      "name": "Wiring - Yellow"
+    },
+    {
+      "id": 20,
+      "alias": "3.10.",
+      "name": "Wiring - Gray"
+    },
+    {
+      "id": 21,
+      "alias": "3.11.",
+      "name": "Wiring - Orange"
+    },
+    {
+      "id": 22,
+      "alias": "3.12.",
+      "name": "Wiring - Black"
+    },
+    {
+      "id": 23,
+      "alias": "3.13.",
+      "name": "Wiring - Blue - Ethernet Cable"
+    },
+    {
+      "id": 24,
+      "alias": "3.14.",
+      "name": "Electrical – White Electrical Conduit"
+    },
+    {
+      "id": 25,
+      "alias": "3.15.",
+      "name": "Conduits - Grey"
+    },
+    {
+      "id": 26,
+      "alias": "3.16.",
+      "name": "Conduits - Green"
+    },
+    {
+      "id": 27,
+      "alias": "3.17.",
+      "name": "Conduits - White"
+    },
+    {
+      "id": 28,
+      "alias": "3.18.",
+      "name": "Conduits - Purple"
+    },
+    {
+      "id": 29,
+      "alias": "3.19.",
+      "name": "Wiring - Red"
+    },
+    {
+      "id": 30,
+      "alias": "3.20.",
+      "name": "Wiring - Blue"
+    },
+    {
+      "id": 31,
+      "alias": "3.21.",
+      "name": "Wiring - Green"
+    },
+    {
+      "id": 32,
+      "alias": "3.22.",
+      "name": "Conduits - Orange"
+    },
+    {
+      "id": 33,
+      "alias": "3.23.",
+      "name": "Conduits - Cyan"
+    },
+    {
+      "id": 34,
+      "alias": "3.24.",
+      "name": "Wiring - Brown"
+    },
+    {
+      "id": 35,
+      "alias": "4.1.",
+      "name": "Plumbing Pipe Copper"
+    },
+    {
+      "id": 36,
+      "alias": "4.2.",
+      "name": "Plumbing Pipe - white PVC"
+    },
+    {
+      "id": 37,
+      "alias": "4.3.",
+      "name": "Plumbing pipe - black"
+    },
+    {
+      "id": 38,
+      "alias": "4.4.",
+      "name": "Plumbing pipe - Blue plastic Pex tubing"
+    },
+    {
+      "id": 39,
+      "alias": "4.5.",
+      "name": "Plumbing pipe - Red plastic Pex tubing"
+    },
+    {
+      "id": 40,
+      "alias": "4.6.",
+      "name": "Plumbing pipe - Clear plastic Pex tubing"
+    },
+    {
+      "id": 41,
+      "alias": "4.7.",
+      "name": "Plumbing pipe - Insulation Pex tubing"
+    },
+    {
+      "id": 42,
+      "alias": "4.8.",
+      "name": "Plumbing - Black Tube – Plumbing Sanitary Line"
+    },
+    {
+      "id": 43,
+      "alias": "4.9.",
+      "name": "Plumbing Pipe - Grey PVC"
+    },
+    {
+      "id": 44,
+      "alias": "4.10.",
+      "name": "Plumbing: White PEX Tubing"
+    },
+    {
+      "id": 45,
+      "alias": "4.11.",
+      "name": "Plumbing: Blue PEX Tubing"
+    },
+    {
+      "id": 46,
+      "alias": "4.12.",
+      "name": "Plumbing pipe - Copper pipe Insulation"
+    },
+    {
+      "id": 47,
+      "alias": "4.13.",
+      "name": "Plumbing - Copper Pex Tubing"
+    },
+    {
+      "id": 48,
+      "alias": "4.14.",
+      "name": "Plumbing - Black cast iron pipe"
+    },
+    {
+      "id": 49,
+      "alias": "4.15.",
+      "name": "Plumbing: Red PEX Tubing"
+    },
+    {
+      "id": 50,
+      "alias": "5.1.",
+      "name": "Celing - Square Ductwork"
+    },
+    {
+      "id": 51,
+      "alias": "5.2.",
+      "name": "Celing - Round Ductwork"
+    },
+    {
+      "id": 52,
+      "alias": "5.3.",
+      "name": "Mechanical - Clothes Dryer Vent line"
+    }
+  ]
+}

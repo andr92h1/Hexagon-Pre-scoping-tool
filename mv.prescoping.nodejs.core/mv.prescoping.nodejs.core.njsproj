@@ -1,0 +1,74 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>mv.prescoping.nodejs.core</Name>
+    <RootNamespace>mv.prescoping.nodejs.core</RootNamespace>
+    <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
+    <NodeExeArguments>
+    </NodeExeArguments>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>35513b82-5181-4ab4-96d7-c01cf479b8eb</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>False</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="lib\date-utilities.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="gulpfile.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="lib\three\Euler.js" />
+    <Content Include="lib\three\MathUtils.js" />
+    <Content Include="lib\three\Matrix3.js" />
+    <Content Include="lib\multivista-metadata.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="lib\three\Matrix4.js" />
+    <Content Include="lib\three\Quaternion.js" />
+    <Content Include="lib\three\Vector3.js" />
+    <Content Include="package.json" />
+    <Content Include="lib\psulib.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="lib\pano-utilities.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="README.md" />
+    <Content Include="test\date-utilities-test.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="test\pano-utilities-test.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="webpack.config.js">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\" />
+    <Folder Include="lib\three\" />
+    <Folder Include="test\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+</Project>

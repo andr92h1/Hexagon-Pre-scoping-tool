@@ -1,0 +1,302 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.noselect {
+    cursor: default;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin: 0px;
+    min-height: 100vh;
+    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    height: calc(100% - 80px);
+    margin: 10px;
+}
+
+#mainLayout {
+    overflow: hidden;
+}
+
+#navbar-notifications {
+    cursor: pointer;
+}
+
+#navbar-notifications-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#projectExplorerLoadingAnimation {
+    display: none;
+    position: absolute;
+}
+
+#projectExplorerLoadingAnimation,
+#predictionsListLoadingAnimations {
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-image: url('../lib/jqwidgets/css/images/loader.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: whitesmoke;
+    opacity: 0.5;
+}
+
+#projectsDropDown {
+    margin: 5px auto;
+}
+
+#projectExplorerTree {
+    margin: 5px auto;
+    width: 95%;
+    max-height: 60%;
+    min-height: 60%;
+    overflow-y: scroll;
+    display: none;
+    overflow: hidden;
+}
+
+#projectExplorerStages {
+    margin: auto;
+}
+
+#projectExplorerStageDetails {
+    width: 95%;
+    height: 200px;
+    margin: 5px auto;
+    border: 1px solid;
+    border-color: #E0E0E0;
+}
+
+#newProjectNameLabel,
+#newProjectCodeLabel,
+#multivistaNewProjectIdLabel {
+    margin-bottom: 0px;
+}
+
+#newProjectName,
+#newProjectCode,
+#multivistaNewProjectId {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#annotationClassDropDown,
+#annotationConfLevelDropDown,
+#predictionTypeDropDown,
+#floorplanNameDropDown,
+#stageTypeDropDown,
+#stageValue,
+#stageDescription {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#predictionClassFilterDropDown,
+#stageSubTypeDropDown {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+#stageDateTimeInput {
+    margin-bottom: 30px;
+}
+
+#newEntityName {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/*#buildingNameInput,
+#buildingNameInputSave,
+#floorNameInput,
+#floorNameInputSave {
+    margin-top: 10px;
+}*/
+
+#newEntityCancel {
+    float: right;
+}
+
+#btnApplyMatching,
+#btnRestartMatching,
+#btnCancelMatching,
+#btnApplyScaling,
+#btnRestartScaling,
+#btnCancelScaling {
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    z-index: 9999;
+}
+
+#btnApplyMatching,
+#btnApplyScaling {
+    left: 5px;
+}
+
+#btnRestartMatching,
+#btnRestartScaling {
+    left: 170px;
+}
+
+#btnCancelMatching,
+#btnCancelScaling {
+    left: 335px;
+}
+
+.jqx-notification-container {
+    z-index: 9999;
+}
+
+#viewersContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#viewerSplitter,
+#viewerContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+    margin: 0;
+}
+
+#photoViewerContainer,
+#viewerMatcherContainer {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+    margin: 0;
+    border-left: 1px solid;
+}
+
+#viewerMatcherContainer {
+    display: none;
+}
+
+#shootTypeSelector {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+#shootDateSelector {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+}
+
+/*Prediction explorer*/
+
+#predictionExplorerContainer {
+/*    max-height: calc(100% - 125px);
+    overflow: scroll;*/
+}
+
+#predictionDropDown {
+    margin: 5px auto;
+}
+
+/*IGGI please, move these to the right place*/
+.floorplan-viewer-container {
+    position: relative;
+    width: 750px;
+    height: 400px;
+}
+
+.viewer-info-box {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    font-size: larger;
+    color: red;
+    font-weight: bold;
+}
+
+.viewer-waiting-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    background-color: red;
+    transform: translate(-50%, -50%);
+    background: url('../icon/loading.gif') 0 0 no-repeat;
+    background-size: 100%;
+    background-position: center;
+}

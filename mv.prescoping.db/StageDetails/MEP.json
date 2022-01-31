@@ -1,0 +1,103 @@
+{
+  "endpointName": "endpoint-mep-20210729-exp-21",
+  "type": "bbox",
+  "minConfidentLevel": 0,
+  "tiling": {
+    "width": 512,
+    "height": 512,
+    "overlapX": 256,
+    "overlapY": 256
+  },
+  "classes": [
+    {
+      "id": 0,
+      "alias": "Electrical Box - plastic",
+      "name": "Electrical Box - plastic"
+    },
+    {
+      "id": 1,
+      "alias": "Electrical Box - metal",
+      "name": "Electrical Box - metal"
+    },
+    {
+      "id": 2,
+      "alias": "Electrical Box - hole",
+      "name": "Electrical Box - hole"
+    },
+    {
+      "id": 3,
+      "alias": "Electrical Box - cover - outlet",
+      "name": "Electrical Box - cover - outlet"
+    },
+    {
+      "id": 4,
+      "alias": "Electrical Box - cover - switch",
+      "name": "Electrical Box - cover - switch"
+    },
+    {
+      "id": 5,
+      "alias": "Electrical lightning - rectangular",
+      "name": "Electrical lightning - rectangular"
+    },
+    {
+      "id": 6,
+      "alias": "Electrical lightning - round",
+      "name": "Electrical lightning - round"
+    },
+    {
+      "id": 7,
+      "alias": "Plumbing Valves - On / Off",
+      "name": "Plumbing Valves - On / Off"
+    },
+    {
+      "id": 8,
+      "alias": "Fire Alarms",
+      "name": "Fire Alarms"
+    },
+    {
+      "id": 9,
+      "alias": "Fire Alarm Pull Station",
+      "name": "Fire Alarm Pull Station"
+    },
+    {
+      "id": 10,
+      "alias": "Fire Extinguisher Cabinet",
+      "name": "Fire Extinguisher Cabinet"
+    },
+    {
+      "id": 11,
+      "alias": "Fire Extinguisher",
+      "name": "Fire Extinguisher"
+    },
+    {
+      "id": 12,
+      "alias": "Exit Signs",
+      "name": "Exit Signs"
+    },
+    {
+      "id": 13,
+      "alias": "Fire Suppression Sprinkler Head",
+      "name": "Fire Suppression Sprinkler Head"
+    },
+    {
+      "id": 14,
+      "alias": "Fire Suppression Sprinkler Head (cover)",
+      "name": "Fire Suppression Sprinkler Head (cover)"
+    },
+    {
+      "id": 15,
+      "alias": "Fire Suppression Whip",
+      "name": "Fire Suppression Whip"
+    },
+    {
+      "id": 16,
+      "alias": "Ceiling - Mechanical Equipment",
+      "name": "Ceiling - Mechanical Equipment"
+    },
+    {
+      "id": 17,
+      "alias": "Floor drains",
+      "name": "Floor drains"
+    }
+  ]
+}

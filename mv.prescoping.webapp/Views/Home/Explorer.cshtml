@@ -1,0 +1,61 @@
+﻿@{ ViewData["Title"] = "Explorer"; }
+
+<script src="~/lib/Turf.js/turf.min.js"></script>
+<script src="~/lib/three.js/three.min.js"></script>
+<script src="~/lib/three.meshline/THREE.MeshLine.min.js"></script>
+<script src="~/lib/ace/ace.js"></script>
+<script src="~/lib/ace/mode-json.js"></script>
+<script src="~/lib/ace/worker-json.js"></script>
+<script src="~/js/mv.prescoping.nodejs.core.psulib.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.utilitis.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.floor-plan-scaler.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.floor-plan-matcher.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.floor-plan-sync.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.vector-modifier.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.vector-capturer.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.vector-snapper.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.photo-viewer.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.floor-plan-viewer.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.layout3d-processor.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.annotation-classification-processor.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.annotation-general-processor.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.floor-plan-room-filler.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.length-measurer.js" asp-append-version="true"></script>
+<script src="~/js/mv.prescoping.explorer.js" asp-append-version="true"></script>
+
+<div id="mainLayout">
+    <div data-container="ViewerPanel">
+        <div id="viewersContainer">
+            <div id="viewerSplitter">
+                <div id="viewerContainer" tabindex="1"></div>
+                <div id="photoViewerContainer" tabindex="2"></div>
+            </div>
+            <div id="viewerMatcherContainer" tabindex="3"></div>
+            <div id="shootTypeSelector"></div>
+            <div id="shootDateSelector"></div>
+        </div>
+    </div>
+    <div data-container="ProjectExplorerPanel">
+        <div id="projectExplorerLoadingAnimation"></div>
+        <div id="projectsDropDown"></div>
+        <div id="projectExplorerTree"></div>
+    </div>
+    <div data-container="PredictionExplorerPanel">
+        <div id="predictionDropDown"></div>
+        <div id="predictionExplorerContainer"></div>
+    </div>
+</div>
+<div id="contextMenu" style="display:none">
+    <ul>
+        <li id="contextMenuItemAddBuilding">Add building</li>
+        <li id="contextMenuItemAddFloor">Add floor</li>
+        <li id="contextMenuItemAddFloorplan">Add floorplan</li>
+        <li id="contextMenuItemAddRoom">Add room</li>
+        <li id="contextMenuItemAddWall">Add wall</li>
+        <li id="contextMenuItemAddWallRect">Add wall (rectangular)</li>
+        <li id="contextMenuItemDelete">Delete</li>
+    </ul>
+</div>
+<div id="notificationWindow">
+    <div id="notificationMessage"></div>
+</div>
