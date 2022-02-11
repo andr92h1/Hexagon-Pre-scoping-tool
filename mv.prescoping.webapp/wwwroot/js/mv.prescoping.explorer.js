@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     const POSITION_TOLERANCY = 0.5;
     const ENTITIES_URL = PATH_PREFIX + 'api/Entities';
     const STAGES_URL = PATH_PREFIX + 'api/Stages';
@@ -454,7 +455,7 @@
                         source.push(stageType.name);
                         filteredTypes.push(stageType);
                     }
-                    
+
                 }
 
                 $('#predictionDropDown').jqxDropDownList('source', source);
@@ -486,11 +487,11 @@
             id: 'id',
             localdata: filteredData
         };
-        
+
         var dataAdapter = new $.jqx.dataAdapter(source);
-        
+
         dataAdapter.dataBind();
-        
+
         var records = dataAdapter.getRecordsHierarchy('id', 'parentId', 'items', [{ name: 'name', map: 'label' }]);
         $('#projectExplorerTree').jqxTree({ source: records, width: '95%', height: '100%', theme: JQX_THEME });
         $('#projectExplorerTree').jqxTree('selectItem', null);
@@ -722,7 +723,7 @@
                                                     roomFiller.Update(viewerItemsToRemove);
                                                 }
                                             }
-                                            
+
                                             $('#projectExplorerTree').jqxTree('removeItem', selectedTreeItem);
 
                                             cleanSelectedEntityDetails();
@@ -740,9 +741,9 @@
                 }
             }
         });
-        
+
         $(document).on('contextmenu', function (e) {
-            if ($(e.target).attr('id') === 'projectExplorerTree'|| $(e.target).parents('.jqx-tree').length > 0) {
+            if ($(e.target).attr('id') === 'projectExplorerTree' || $(e.target).parents('.jqx-tree').length > 0) {
                 return false;
             }
             return true;
@@ -946,8 +947,7 @@
                                 if (value == true) {
                                     cellContent.text('Planned');
                                 }
-                                else
-                                {
+                                else {
                                     cellContent.text('Actual');
                                 }
 
@@ -987,13 +987,17 @@
                         var buttonTemplate = "<div style='float: left; padding: 3px; margin: 2px;'><div style='margin: 4px; width: 16px; height: 16px;'></div></div>";
                         var addButton = $(buttonTemplate);
                         var deleteButton = $(buttonTemplate);
+                        var qcButton = $(buttonTemplate);
                         container.append(addButton);
                         container.append(deleteButton);
+                        container.append(qcButton);
                         toolBar.append(container);
                         addButton.jqxButton({ cursor: "pointer", enableDefault: false, height: 25, width: 25 });
                         addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
                         deleteButton.jqxButton({ cursor: "pointer", enableDefault: false, height: 25, width: 25 });
                         deleteButton.find('div:first').addClass(toTheme('jqx-icon-delete'));
+                        qcButton.jqxButton({ cursor: "pointer", enableDefault: false, height: 25, width: 25 });
+                        qcButton.find('div:first').addClass(toTheme('jqx-icon-edit'));
                         addButton.on('click', function () {
                             var selectedTreeItem = $('#projectExplorerTree').jqxTree('getSelectedItem');
                             if (selectedTreeItem) {
@@ -1024,7 +1028,25 @@
                                 }
                             }
                         });
+                        qcButton.on('click', function () {
+                            var selectedRowIndex = $("#projectExplorerStages").jqxGrid('getselectedrowindex');
+
+                            if (selectedRowIndex != -1) {
+                                var selectedRow = $("#projectExplorerStages").jqxGrid('getrowdata', selectedRowIndex);
+                                if (selectedRow && selectedRow.isPlanned == false) {
+
+                                  
+
+                                                showQcWindow();
+                                            
+
+                                }
+
+                            }
+
+                        });
                     }
+
                 }
             );
 
@@ -1142,7 +1164,7 @@
                         }
 
                         vertices.push(vertices[0]);
-                        
+
                         data.geometry = turf.getGeom(turf.polygon([vertices]));
                         data.type = 'Feature';
 
@@ -1263,20 +1285,20 @@
                 "Authorization": "Basic " + btoa('multiviewer@multivista.com' + ":" + 'Leica123*')
             }
         })
-        .done(
-            function (data) {
-                for (var i = 0; i < data.data.length; i++) {
-                    data.data[i].PhotoID = parseInt(data.data[i].PhotoID.replace('P', ''));
-                }
+            .done(
+                function (data) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        data.data[i].PhotoID = parseInt(data.data[i].PhotoID.replace('P', ''));
+                    }
 
-                selectedFloorPhotos = [];
-                mainViewer.addPhotos(data.data);
-            }
-        ).fail(
-            function (error) {
-                showNotification('Unable to load shoots', NOTIFICATION_TYPE.ERROR);
-            }
-        );
+                    selectedFloorPhotos = [];
+                    mainViewer.addPhotos(data.data);
+                }
+            ).fail(
+                function (error) {
+                    showNotification('Unable to load shoots', NOTIFICATION_TYPE.ERROR);
+                }
+            );
     }
 
     function loadAttachedProjectFloorplans(projectCode, onSuccess, onError) {
@@ -2482,6 +2504,9 @@
         $('#newEntityCancel').on('click', function () { $('#addEntityWindow').jqxWindow('destroy'); });
     }
 
+
+
+
     function showLayoutValidationWindow() {
         var layoutValidationWindow = `
             <div id="layoutValidationWindow">
@@ -2533,7 +2558,7 @@
                         if (layoutValidationPhotoViewer == null) {
                             layoutValidationPhotoViewer = new PhotoViewer($('#layoutValidationViewer'));
                         }
-                        
+
                         if (layoutValidationlayout3dProcessor == null) {
                             layoutValidationlayout3dProcessor = new Layout3dProcessor(layoutValidationPhotoViewer);
 
@@ -2554,7 +2579,7 @@
                                 updatePhoto(e.detail.photo.id, e.detail.photo);
                             });
                         }
-                        
+
                         var curPhoto = metadataCache[selectedQueueItem.dateTaken].find(function (e) { return e.PhotoID == selectedPhotoId });
 
                         if (curPhoto != null) {
@@ -2600,11 +2625,11 @@
 
                                 metadataCache[selectedQueueItem.dateTaken] = data.data;
                                 loadValidation();
-                        }).fail(
-                            function (error) {
-                                showNotification('Unable to load shoots', NOTIFICATION_TYPE.ERROR);
-                            }
-                        );
+                            }).fail(
+                                function (error) {
+                                    showNotification('Unable to load shoots', NOTIFICATION_TYPE.ERROR);
+                                }
+                            );
                     } else {
                         loadValidation();
                     }
@@ -2640,6 +2665,57 @@
             }
         });
     }
+
+    function showQcWindow() {
+        var qcValidationWindow = `
+            <div id="qcValidationWindow">
+                <div id="qcWindowHeader">
+                    <span>QC Validation</span>
+                </div>
+                <div id="qcValidationWindowContent" style="overflow: hidden">
+                    <div id="qcValidationList" style="height:100%;width:15%;float:left;">
+                        <div id="qcValidationListContent"></div>
+                    </div>
+                    <div id="qcValidationViewer" style="position:relative;height:100%;width:85%;float:right;"></div>
+                    <input type="button" value="Valid" id="qcValidationBtnValid" style="position:absolute;bottom:10px;left:50%;width:150px;transform:translateX(-50%);-ms-transform:translateX(-50%);display:none;">
+                </div>
+            </div>
+        `
+
+        $('body').append(qcValidationWindow);
+
+        $('#qcValidationWindow').jqxWindow({
+            width: '95%',
+            height: '95%',
+            maxHeight: '95%',
+            maxWidth: '95%',
+            isModal: true,
+            theme: JQX_THEME,
+            resizable: false,
+            draggable: false,
+            showCloseButton: true,
+            closeButtonAction: 'close'
+        }).show();
+
+        $('#qcValidationWindow').on('close', function (event) { $('#qcValidationWindow').remove() });
+
+        $('#qcValidationWindow').on('keydown', function (event) {
+            switch (event.keyCode) {
+                case 1:
+                    if (event.keyCode == 27) {
+
+                        $('#qcValidationWindow').off('keydown');
+                        qcValidationWindow.jqxWindow('close');
+                    }
+                    break;
+            }
+        });
+
+        $('#qcValidationWindow').focus();
+
+
+    }
+
 
     function onVectorFeaturesSelected(isUserAction, features) {
         // select feature in project explorer if selected on viewer
@@ -2965,3 +3041,4 @@
 
     loadStageTypes();
 })
+
