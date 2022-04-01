@@ -300,3 +300,9 @@ main {
     background-size: 100%;
     background-position: center;
 }
+
+.jqx-input-label {
+    visibility: hidden;
+    position: absolute;
+
+}

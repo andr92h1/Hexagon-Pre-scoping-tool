@@ -32,7 +32,7 @@ namespace mv.prescoping.webapp.Controllers
                 return NotFound();
             }
 
-            HttpClient httpClient = new HttpClient();
+            HttpClient httpClient = new HttpClient();         
             var response = await httpClient.GetAsync(url);
             var content = await response.Content.ReadAsStreamAsync();
             return new FileStreamResult(content, response.Content.Headers.ContentType.MediaType);

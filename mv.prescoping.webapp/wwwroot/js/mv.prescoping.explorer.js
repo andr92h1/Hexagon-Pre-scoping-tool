@@ -145,6 +145,8 @@ $(document).ready(function () {
     $('#mainLayout').on('create', function () {
         mainViewer = new FloorPlanViewer($('#viewerContainer'));
 
+
+
         //$(mainViewer.dispatcherDOM).on('entitiespicked', function (e) {
         //    onVectorFeaturesSelected(e.detail.entities);
         //});
@@ -1035,18 +1037,203 @@ $(document).ready(function () {
                                 var selectedRow = $("#projectExplorerStages").jqxGrid('getrowdata', selectedRowIndex);
                                 if (selectedRow && selectedRow.isPlanned == false) {
 
-                                  
+                                    var rows = $('#projectExplorerStageDetails').jqxGrid('getrows');
 
-                                                showQcWindow();
-                                            
+                                    if (rows && rows.length > 0) {
+                                        var imageIds = [];
 
+                                        for (var row of rows) {
+                                            if (imageIds.indexOf(row.photoId) == -1) {
+                                                imageIds.push(row.photoId);
+                                            }
+                                        }
+
+                                        showQcWindow(imageIds);
+
+                                        // 1. Create photo viewr
+                                        var photoViewer = new PhotoViewer($('#qcValidationViewer'));
+
+                                        // 2. Get image's metadata from Multivista server
+                                        $.ajax({
+                                            url: 'https://mds.multivista.com/index.cfm?fuseaction=aAPI.getPhotos&ShootTypeUID=' + mainViewer.currentMetadata.ShootTypeUID + '&ProjectUID=' + selectedProject.details + '&Date=' + selectedRow.timestamp.split('T')[0],
+                                            headers: {
+                                                "Authorization": "Basic " + btoa('multiviewer@multivista.com' + ":" + 'Leica123*')
+                                            }
+                                        }).done(
+                                            function (data) {
+
+                                                var actualImages = [];
+
+                                                // 0 check image's metadata (do you have metadata entries for all image ids) for (var item in imageIds) (do you have dasta.data for item)
+                                                // if there is some missing - alert(...) and abort QC
+
+                                                for (var i = 0; i < imageIds.length; i++) {
+
+                                                    var imageId = imageIds[i];
+
+                                                    for (var j = 0; j < data.data.length; j++) {
+
+                                                        var metadata = data.data[j];
+
+                                                        if ('P' + imageId == metadata.PhotoID) {
+
+                                                            actualImages.push(metadata);
+                                                        }
+
+                                                    }
+                                                }
+
+                                                $(document).ready(function () {
+
+                                                    var imagesToQc = actualImages.filter(function (e) { return e.PhotoID != null });
+
+                                                    // prepare the data
+                                                    var source =
+                                                    {
+                                                        datatype: "json",
+                                                        datafields: [
+                                                            { name: 'DateTaken', type: 'string' },
+                                                            { name: 'Height', type: 'string' },
+                                                            { name: 'HotspotTheta', type: 'string' },
+                                                            { name: 'HotspotType', type: 'string' },
+                                                            { name: 'HotspotX', type: 'string' },
+                                                            { name: 'HotspotY', type: 'string' },
+                                                            { name: 'LargeURL', type: 'string' },
+                                                            { name: 'MediumURL', type: 'string' },
+                                                            { name: 'PhotoID', type: 'string' },
+                                                            { name: 'PhotoNumber', type: 'string' },
+                                                            { name: 'PhotoType', type: 'string' },
+                                                            { name: 'ThumbURL', type: 'string' },
+                                                            { name: 'UnalteredURL', type: 'string' },
+                                                            { name: 'Width', type: 'string' }
+
+                                                        ],
+                                                        id: 'PhotoID',
+                                                        localdata: imagesToQc
+                                                    };
+                                                    var dataAdapter = new $.jqx.dataAdapter(source);
+
+                                                    // 3. Create a jqxListBox
+
+                                                    $("#qcValidationListContent").jqxListBox({ source: dataAdapter, displayMember: "PhotoID", valueMember: "PhotoID", width: '100%', height: '100%' });
+                                                    
+                                                    $('#qcValidationListContent').on('select', function (event) {
+                                                        var metadata = event.args.item.originalItem;
+                                                        
+                                                        photoViewer.cleanupAll();
+                                                        photoViewer.showPhoto(metadata);
+
+                                                        $.ajax({
+                                                            url: ANNOTATIONS_URL,
+                                                            data: {
+                                                                photoId: metadata.PhotoID.replace('P', ''),
+                                                                stageId: selectedRow.id
+                                                            }
+                                                        }).done(function (data) {
+                                                            if (data.length > 0) {
+                                                                curPhotoAnnotations = data;
+
+                                                                for (var annotation of data) {
+                                                                    PUtilities.prototype.invertY(annotation.geometry);
+                                                                }
+                                                                photoViewer.addEntities(data, photoViewer.styleDefault);
+                                                            }
+
+                                                            var photoViewerModifier = new VectorModifier(photoViewer);
+                                                            photoViewerModifier.Start();
+
+                                                            $(photoViewer.dispatcherDOM).on('entitiespicked', function (event) {
+
+                                                                var selectedAnnotation = event.originalEvent.detail.entities[0];
+                                                                console.log(selectedAnnotation);
+
+                                                                var classes = [];
+
+                                                                for (var annotation of curPhotoAnnotations) {
+                                                                    if (classes.indexOf(annotation.className) == -1) {
+                                                                        classes.push(annotation.className);
+                                                                    }
+                                                                };
+
+                                                                var source = classes;
+
+                                                                // Create a jqxDropDownList                                                                
+                                                                $("#qcValidationWindowContent").append('<div id="qcAnnotationClassDropDown" style="position: absolute; z-index:1; right: 1%; margin-top: 3px; background-color: white;"></div>');
+                                                                $("#qcAnnotationClassDropDown").jqxDropDownList({ source: source, placeHolder: "Select Annotation's Class", width: 320, height: 30 });
+
+                                                                $('#qcAnnotationClassDropDown').on('open', function (event) {
+
+                                                                    $("#qcAnnotationClassDropDown").jqxDropDownList('setContent', selectedAnnotation.className);
+
+                                                                    $('#qcAnnotationClassDropDown').on('select', function (event) {
+
+                                                                        selectedAnnotation.className = event.args.item.value;
+
+                                                                        photoViewer.updateEntities(data, photoViewer.styleDefault);
+
+                                                                        $('#qcAnnotationClassDropDown').jqxDropDownList('destroy');
+
+                                                                    });
+                                                                });
+
+                                                                $(photoViewer.dispatcherDOM).on('unselectall', function (event) {
+                                                                    $('#qcAnnotationClassDropDown').jqxDropDownList('destroy');
+                                                                });
+
+                                                            });
+                                                            var photoViewerVectorCapturer = new VectorCapturer(photoViewer);
+
+                                                            $(photoViewerModifier.dispatcherDOM).on('capturingcanceled', function () {
+                                                                photoViewerVectorCapturer.Cancel();
+                                                                photoViewerModifier.Start();
+                                                            });
+
+                                                            $(photoViewerVectorCapturer.dispatcherDOM).on('featurecaptured', function (newAnnotation) {
+
+                                                                var newAnnotation = {                                                                  
+                                                                    className: '',
+                                                                    code: selectedRow.code,
+                                                                    entityId: selectedRow.entityId,
+                                                                    geometry : newAnnotation.originalEvent.detail.feature.geometry,                             
+                                                                    photoId: metadata.PhotoID.replace('P', ''),
+                                                                    source : 1,
+                                                                    stageId: selectedRow.id,
+                                                      
+                                                                };
+                                                                addNewAnnotation(
+                                                                    newAnnotation,
+                                                                    function (data) {                                                                      
+                                                                        photoViewer.addEntities([data]);
+                                                                    }
+                                                                );                                        
+                                                            });
+
+                                                            $('#qcValidationBtnNewAnnotation').on('click', function () {
+                                                                photoViewerModifier.Stop();
+                                                                photoViewerVectorCapturer.Start(VectorCapturer.prototype.geometryType.polygon, VectorCapturer.prototype.rectangleTemplate);
+                                                            });
+
+                                                            $('#qcValidationBtnValid').on('click', function () {
+                                                            });
+
+                                                            $('#qcValidationBtnRemove').on('click', function () {
+                                                            });
+
+                                                        }).fail(function (error) {
+                                                            showNotification('Unable to load annotations', NOTIFICATION_TYPE.ERROR);
+                                                        });
+                                                    });
+                                                });
+                                          }).fail(
+                                                function (error) {
+                                                    showNotification('Metadata unavaialble for all shots', NOTIFICATION_TYPE.ERROR);
+                                                }
+                                        );
+                                    }
                                 }
-
                             }
-
                         });
                     }
-
                 }
             );
 
@@ -1427,14 +1614,8 @@ $(document).ready(function () {
                 updatePhoto(e.detail.photo.id, e.detail.photo);
             });
 
-            $(layout3dProcessor.dispatcherDOM).on('layout3dselected', function (e) {
-                var reprojectedLayout = getReprojectedLayout(e.detail);
-                mainViewer.drawScratchGeometry(reprojectedLayout.geometry);
-            });
 
-            $(layout3dProcessor.dispatcherDOM).on('layout3dunselected', function (e) {
-                mainViewer.drawScratchGeometry(null);
-            });
+
 
             // $('#predictionDropDown').jqxDropDownList('val', NONE_STAGE_TYPE_NAME);
         }
@@ -1503,6 +1684,21 @@ $(document).ready(function () {
             onError(error);
         });
     }
+
+
+    function addNewAnnotation(annotation, onSuccess, onError) {
+        $.ajax({
+            url: ANNOTATIONS_URL,
+            method: 'POST',
+            data: JSON.stringify(annotation),
+            contentType: 'application/json'
+        }).done(function (data) {
+            onSuccess(data);
+        })
+    }
+
+
+
 
     function deleteEntity(entityId, onSuccess, onError) {
         $.ajax({
@@ -1676,7 +1872,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                     `
-
+         
         $(annotationsFilterWindow).insertAfter('#mainLayout');
 
         var classes = [];
@@ -2664,21 +2860,25 @@ $(document).ready(function () {
                 }
             }
         });
-    }
+    } 
 
-    function showQcWindow() {
+    function showQcWindow(imageIds) {
         var qcValidationWindow = `
             <div id="qcValidationWindow">
                 <div id="qcWindowHeader">
-                    <span>QC Validation</span>
+                    <span>QC Validation </span>
                 </div>
+                   
                 <div id="qcValidationWindowContent" style="overflow: hidden">
                     <div id="qcValidationList" style="height:100%;width:15%;float:left;">
                         <div id="qcValidationListContent"></div>
                     </div>
                     <div id="qcValidationViewer" style="position:relative;height:100%;width:85%;float:right;"></div>
-                    <input type="button" value="Valid" id="qcValidationBtnValid" style="position:absolute;bottom:10px;left:50%;width:150px;transform:translateX(-50%);-ms-transform:translateX(-50%);display:none;">
-                </div>
+                    <input type="button" value="New annotation" id="qcValidationBtnNewAnnotation" style="position:absolute;bottom:10px;left:32%;width:150px;transform:translateX(-50%);-ms-transform:translateX(-50%);display:none;">
+                    <input type="button" value="Approve annotations" id="qcValidationBtnValid" style="position:absolute;bottom:10px;right:30%;width:150px;transform:translateX(-50%);-ms-transform:translateX(-50%);display:none;">
+                    <input type="button" value="Remove Annotations" id="qcValidationBtnRemove" style="position:absolute;bottom:10px;left:82%;width:150px;transform:translateX(-50%);-ms-transform:translateX(-50%);display:none;">
+                    </div>
+                       
             </div>
         `
 
@@ -2699,6 +2899,7 @@ $(document).ready(function () {
 
         $('#qcValidationWindow').on('close', function (event) { $('#qcValidationWindow').remove() });
 
+
         $('#qcValidationWindow').on('keydown', function (event) {
             switch (event.keyCode) {
                 case 1:
@@ -2712,7 +2913,10 @@ $(document).ready(function () {
         });
 
         $('#qcValidationWindow').focus();
-
+        $('#qcValidationBtnValid').show();
+        $('#qcValidationBtnRemove').show();
+        $('#qcValidationBtnNewAnnotation').show();
+     
 
     }
 
